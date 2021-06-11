@@ -1,1 +1,3 @@
 https://discoverthreejs.com/book/
+'git config credential.helper ""'  (to get rid of stored credentials)
+also go to keychain and delete github.com entry
