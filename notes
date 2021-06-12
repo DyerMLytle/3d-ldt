@@ -1,3 +1,9 @@
 https://discoverthreejs.com/book/
 'git config credential.helper ""'  (to get rid of stored credentials)
 also go to keychain and delete github.com entry
+git pull origin main
+
+git add *
+git commit
+git push -u origin main
+git push --force -u origin main
