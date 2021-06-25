@@ -14,3 +14,10 @@ git add *
 git commit
 git push origin main
 git pull origin main
+
+# copy directory
+tar cf - . | (cd /work/bkup/jane && tar xvf -)
+
+# to remote machine
+ssh kumquat mkdir /work/bkup/jane
+tar cf - . | ssh kumquat 'cd /work/bkup/jane && tar xvf -'
