@@ -3,17 +3,34 @@ import {
   Mesh,
   MeshStandardMaterial,
   MathUtils,
+  TextureLoader,
 } from '../../../../vendor/three.module.js';
 
 const radiansPerSecond = MathUtils.degToRad(15);
+
+function createMaterial() {
+  // create a texture loader.
+  const textureLoader = new TextureLoader();
+
+  // load a texture
+  const texture = textureLoader.load(
+    './src/assets/textures/uv-test-bw.png',
+  );
+
+  // create a "standard" material using
+  // the texture we just loaded as a color map
+  const material = new MeshStandardMaterial({
+    map: texture,
+  });
+
+  return material;
+}
 
 function createCube() {
   // create a geometry
   const geometry = new BoxBufferGeometry(2, 2, 2);
 
-  // Switch the old "basic" material to
-  // a physically correct "standard" material
-  const material = new MeshStandardMaterial({ color: 'purple' });
+  const material = createMaterial();
 
   // create a Mesh containing the geometry and material
   const cube = new Mesh(geometry, material);
