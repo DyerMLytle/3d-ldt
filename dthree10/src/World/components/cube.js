@@ -14,7 +14,7 @@ function createMaterial() {
 
   // load a texture
   const texture = textureLoader.load(
-    './src/assets/textures/uv-test-col.png',
+    './src/assets/textures/uv-test-bw.png',
   );
 
   // create a "standard" material using
