@@ -1,6 +1,5 @@
 import { createCamera } from './components/camera.js';
-import { createCube } from './components/cube.js';
-import { createSphere } from './components/sphere.js';
+import { createMeshGroup } from './components/meshGroup.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
 
@@ -23,24 +22,15 @@ class World {
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
-    
+    loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
 
     const controls = createControls(camera, renderer.domElement);
-
-    loop = new Loop(camera, scene, renderer);
-    const cube = createCube();
-    const sphere = createSphere();
-    const sphere2 = createSphere();
-    sphere2.position.set(1,0,0)
-    const { ambientLight, mainLight } = createLights();
-
-    loop.updatables.push(controls);
-
-    // Stop cube rotation
-    // loop.updatables.push(cube);
+    const { hemisphereLight, mainLight } = createLights();
+    const meshGroup = createMeshGroup();
     
-    scene.add(sphere, ambientLight, mainLight);
+    loop.updatables.push(controls, meshGroup);
+    scene.add(meshGroup, hemisphereLight, mainLight);
 
     const resizer = new Resizer(container, camera, renderer);
   }

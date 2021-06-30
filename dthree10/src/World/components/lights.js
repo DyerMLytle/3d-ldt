@@ -8,9 +8,9 @@ function createLights() {
   const mainLight = new DirectionalLight('white', 5); 
   mainLight.position.set(10, 10, 10);
 
-  const ambientLight = new AmbientLight('white', 2);
+  const hemisphereLight = new HemisphereLight('white', 'darkslategrey', 5);
   
-  return { ambientLight, mainLight };
+  return { hemisphereLight, mainLight };
 }
 
 export { createLights };
